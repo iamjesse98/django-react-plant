@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="{% static "values/css/metro.css" %}" rel="stylesheet">
+    <link href="{% static "values/css/metro-icons.css" %}" rel="stylesheet">
+    <link href="{% static "values/css/metro-colors.css" %}" rel="stylesheet">
+    <link href="{% static "values/css/metro-responsive.css" %}" rel="stylesheet">
+    <link href="{% static "values/css/metro-schemes.css" %}" rel="stylesheet">
+    <script src="{% static "values/js/jquery-2.1.3.min.js" %}"></script>
+    <script src="{% static "values/js/metro.js" %}"></script>
+    <title>Document</title>
+</head>
+<body style="background: #eee; font-size: 20px; padding: 10px; display: flex; justify-content: center; flex-direction: row; align-items: center;">
+<form style="width: 100%;" method="post">
+    {% csrf_token %}
+    <input style="width: 100%; display: flex; flex-direction: coloumn;" type="text" required id="id_pid" name="pid" placeholder="pid" required autofocus/>
+    <br><br><input style="width: 100%; display: flex; flex-direction: coloumn;" type="text" required id="id_latitude" name="latitude" placeholder="latitude" required/>
+    <br><br><input style=" width: 100%;display: flex; flex-direction: coloumn;" type="text" required id="id_longitude" name="longitude" placeholder="longitude" required/>
+     <!--{{ form.as_table }}-->
+    <br><br><input style="text-align: center; width: 100%;" type = 'Submit' value = 'Submit'/> 
+</form>
+</body>
+</html>

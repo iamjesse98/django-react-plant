@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div id="myDiv" style="width:680px; height:700px;"></div>
+    <script>
+    // initial data..
+
+    fetch(`/values/`).then(res => res.json()).then(data => {
+        let z1 = [
+            data.map(i => i.temperature),
+            data.map(i => i.humidity),
+            data.map(i => i.moisture),
+            data.map(i => i.distance)
+        ]
+
+        console.log(z1)
+
+        // creating data objects..
+            var data_z1 = { z: z1, type: 'surface' };
+
+            // Plotting the surfaces..
+            Plotly.newPlot('myDiv', [data_z1]);
+    })
+        // z1 = [
+        //     [8.83, 8.89, 8.81, 8.87, 8.9, 8.87]
+        // ];
+
+        
+    </script>
+</body>
+</html>

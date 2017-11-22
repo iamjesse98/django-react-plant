@@ -114,7 +114,7 @@ def register(request):
             if user.is_active:
                 login(request, user)
                 #return render(request,'index.html')
-                return HttpResponseRedirect('/values/gui/')
+                return HttpResponseRedirect('/values/react/')
     context = {
         "form": form,
     }

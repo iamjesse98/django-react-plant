@@ -6,7 +6,6 @@ import Paper from 'material-ui/Paper'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import CommunicationVoicemail from 'material-ui/svg-icons/communication/voicemail'
 import Bacon from 'baconjs'
 // import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -27,6 +26,12 @@ const largeText = {
 const btstyle = {
     position: 'fixed',
     right: '10px',
+    bottom: '10px'
+}
+
+const btmstyle = {
+    position: 'fixed',
+    right: '47px',
     bottom: '10px'
 }
 
@@ -58,6 +63,9 @@ export default class Dash extends Component {
             pids: []
         }
         // injectTapEventPlugin()
+    }
+    sendManual() {
+        fetch(`/values/motor/`, { method: 'post', body: JSON.stringify({ on: 2 }) }).then(res => res.json()).then(res => console.log(res))
     }
     sendCommand() {
         this.setState({
@@ -140,8 +148,11 @@ export default class Dash extends Component {
                         </CardActions>
                     </Card>
                 </Paper>
+                <FloatingActionButton onClick={() => this.sendManual()} mini={true} style={btmstyle}>
+                    ⭕
+                </FloatingActionButton>
                 <FloatingActionButton onClick={() => this.sendCommand()} mini={true} style={btstyle}>
-                    <ContentAdd />
+                    { this.state.on === 0 ? '💦' : '❌' }
                 </FloatingActionButton>
                 <FloatingActionButton onClick={() => speak(`Temperature is ${this.state.temp}, Humidity is ${this.state.humid}, Water Level is ${this.state.dist}, Soil Moisture is ${this.state.moist}`)} secondary={true} style={{ position: 'fixed', left: '20px', bottom: '20px' }}>
                     <CommunicationVoicemail />
